@@ -1,0 +1,19 @@
+version: "3"
+
+networks:
+  dnsmasq:
+    driver: bridge
+
+services:
+  dnsmasq:
+    image: andyshinn/dnsmasq:2.80
+    ports:
+      - 53:53/udp
+      - 53:53/tcp
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - ./dnsmasq.conf:/etc/dnsmasq.conf
+      - ./hosts-dnsmasq:/etc/hosts-dnsmasq
+    networks:
+      - dnsmasq

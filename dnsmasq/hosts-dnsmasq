@@ -1,0 +1,12 @@
+# sample: dig server.mydomain.local @localhost
+10.0.0.1  server.mydomain.local
+10.0.0.2  server.mydomain.local
+10.0.0.3  server.mydomain.local
+# sample: dig www.foo.com @localhost
+172.16.0.1  www.foo.com
+# sample: dig mail.foo.com @localhost
+172.16.0.2  mail.foo.com
+
+# answer SRV ADDITONAL SECTION
+# sample: dig -t SRV srv.test.local @localhost
+10.0.53.61  10-0-53-61.srv.test.local
