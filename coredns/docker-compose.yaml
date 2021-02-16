@@ -1,0 +1,23 @@
+version: "3"
+
+networks:
+  coredns:
+    driver: bridge
+
+services:
+  coredns:
+    image: coredns/coredns:1.8.0
+    command: -conf /root/Corefile
+    ports:
+      - 53:53/udp
+      - 53:53/tcp
+    volumes:
+      - ./Corefile:/root/Corefile
+    networks:
+      - coredns
+
+  etcd:
+    image: quay.io/coreos/etcd:v3.4.14
+    command: etcd --listen-client-urls http://0.0.0.0:2379 --advertise-client-urls http://0.0.0.0:2379
+    networks:
+      - coredns

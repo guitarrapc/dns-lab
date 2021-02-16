@@ -1,0 +1,39 @@
+. {
+    hosts {
+        192.168.0.10 server-a.test.local
+        fallthrough
+    }
+    forward . 127.0.0.11
+    errors
+    log
+    reload
+}
+
+example {
+    hosts {
+        192.168.10.10 server-a.example
+        fallthrough
+    }
+    forward . 127.0.0.11
+    errors
+    log
+    reload
+}
+
+test {
+    etcd test {
+        path /skydns
+        endpoint http://etcd:2379
+    }
+    errors
+    log
+}
+
+example.local {
+    etcd example.local {
+        path /skydns
+        endpoint http://etcd:2379
+    }
+    errors
+    log
+}
